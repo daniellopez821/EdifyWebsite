@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+h1{
+  font-family: Gelasio;
+  color: white;
+}
+
+body{
+  font-family: Gelasio;
+  background-color: black;
+  color: white;
+}
+
