@@ -1,0 +1,110 @@
+.header{
+  font-size: 3rem;
+  text-align: center;
+  position: absolute;
+  top: 20%;
+  width: 100%;
+}
+
+.body1{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.who{
+  width: 750px;
+  height: 530px;
+  border-radius: 2px;
+  border: white;
+}
+
+.title1{
+  font-size: 3rem;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 28%;
+}
+
+.text1{
+  font-size: 3rem;
+  text-align: center;
+  position: absolute;
+  top: 65%;
+  width: 40%;
+  left: 16%;
+}
+
+span{
+  color: #59f8e8;
+}
+
+button{
+  color: white;
+  border-radius: 25px;
+  border: none;
+}
+.whowe{
+  background-color: #20A4F3;
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  font-size: 3rem;
+  width: 800px;
+  height: 560px;
+}
+
+.body2{
+  position: absolute;
+  top: 150%;
+  width: 100%;
+  height: 500px;
+}
+
+.howwehelp{
+  background-color: #c1cfda;
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  width: 800px;
+  height: 560px;
+}
+
+.title2{
+  font-size: 3rem;
+  text-align: center;
+  position: absolute;
+  top: 150%;
+  left: 58%;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.text2{
+  font-size: 3rem;
+  text-align: center;
+  position: absolute;
+  top: 160%;
+  left: 56%;
+  width: 30%;
+}
+
+.bottomheader{
+  font-size: 5rem;
+  text-align: center;
+  position: absolute;
+  top: 230%;
+  left: 10%;
+}
+
+.registerlink{
+  background-color: #941c2f;
+  position: absolute;
+  top: 250%;
+  left: 40%;
+  font-size: 3rem;
+  width: 360px;
+  height: 110px;
+  border-radius: 50px;
+}
