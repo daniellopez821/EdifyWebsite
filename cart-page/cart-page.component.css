@@ -50,54 +50,52 @@ input{
 
 .name{
   position: absolute;
-  top: 33%;
   left: 2%;
 }
 
 #name{
   position: absolute;
-  top: 43%;
-  left: 15%;
+  top: 13%;
+  left: 25%;
   width: 700px;
   height: 100px;
 }
 
 .email{
   position: absolute;
-  top: 53%;
+  top: 33%;
   left: 2%;
 }
 
 #email{
   position: absolute;
-  top: 63%;
-  left: 15%;
+  top: 43%;
+  left: 25%;
   width: 700px;
   height: 100px;
 }
 
 .video{
   position: absolute;
-  top: 73%;
+  top: 53%;
   left: 2%;
 }
 
 #video{
   position: absolute;
-  top: 83%;
-  left: 15%;
+  top: 70%;
+  left: 25%;
 }
 
 .head2{
   position: absolute;
-  top: 110%;
   left: 2%;
   font-size: 5rem;
 }
 
 .selector{
   position: absolute;
-  top: 130%;
+  top: 50%;
   left: 2%;
   font-size: 5rem;
 }
