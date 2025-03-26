@@ -81,7 +81,7 @@ input{
   left: 2%;
 }
 
-#video{
+#file{
   position: absolute;
   top: 70%;
   left: 25%;
@@ -93,11 +93,9 @@ input{
   font-size: 5rem;
 }
 
-.selector{
+.pack{
   position: absolute;
   top: 50%;
   left: 2%;
   font-size: 5rem;
 }
-
-
