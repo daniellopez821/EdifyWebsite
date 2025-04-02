@@ -1,52 +1,44 @@
 import express from 'express';
-import multer from 'multer';
-import path from 'path';
 import cors from 'cors';
-
-
+import mysql from 'mysql2'
 // Create an instance of an Express application
 const app = express();
 const port = 3000;
 
-app.use(cors({
-    origin: 'https://localhost:4200/',
-    methods: 'GET,POST',
-    allowedHeaders: 'Content-Type, Authorization'
-}));
 
-// Set up the multer storage configuration
-const storage = multer.diskStorage({
-    destination: (req, file, cb) =>{
-        cb(null, 'uploads/')
-    },
-    filename: (req, file, cb) =>{
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
-})
-
-const upload = multer({storage});
-
-// Middleware to parse incoming JSON requests (not needed for file uploads)
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-
-// POST route to handle form submission with a file
-app.post('/cart', upload.single('file'), (req, res) => {
-    console.log('Form Data:', req.body);  // Logs the text data (e.g., name, email, category)
-    console.log('Uploaded File:', req.file);  // Logs the uploaded file info
-
-    // Send response back to the frontend
-    res.json({
-        message: 'File uploaded successfully!',
-        file: req.file,
-        name: req.body.name,
-        email: req.body.email,  // Log the email data
-        category: req.body.category  // Log the category data
-    });
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Felipe02102*',
+    database: 'edify_website'
 });
 
 
+app.use(cors());
+
+// Middleware to parse incoming JSON requests (not needed for file uploads)
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// POST route to handle form submission with a file
+app.post('/cart', (req, res) => {
+    console.log('Form Data:', req.body);  // Logs the text data (e.g., name, email, category)
+    const { name, email, topic } = req.body;
+
+    const query = 'INSERT INTO accounts (Name, email, package) VALUES (?, ?, ?)';
+
+    connection.execute(query, [name, email, topic], (err, results) => {
+        if (err) {
+            console.error('Error inserting data into MySQL:', err);
+            res.status(500).json({ message: 'Error saving item to cart' });
+        } else {
+            console.log('Insert results:', results);
+            res.status(200).json({ message: 'Item added to cart', data: results });
+        }
+    });
+
+});
+
 app.listen(port,()=>{
-    console.log(`server is running at https://localhost:${port}`);
+    console.log(`server is running at http://localhost:${port}`);
 })

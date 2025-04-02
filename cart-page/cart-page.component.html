@@ -1,65 +1,20 @@
-<!doctype html>
 <meta charset="UTF-8">
 <title>Document</title>
 <h1 class="header">Your Cart</h1>
-
-      <form  id="uploadForm" enctype="multipart/form-data">
-        <div class="AccountInfo">
-
-          <p class="name">Name:</p>
-          <input type="text" id="name" required>
-
-          <p class="email">Email:</p>
-          <input type="email" id="email" required>
-
-
-          <p class="video">Video:</p>
-          <input type="file" id="file" accept="video/mp4,video/x-matroska,video/*"  required>
-        </div>
-
-        <div class="package">
-
-          <h1 class="head2">Select Your Package:</h1>
-          <select class="pack" id="pack" required>
-            <option value="Basic">Basic</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Pro">Pro</option>
-          </select>
-        </div>
-
-        <button type="submit" class="purchase">Purchase</button>
-      </form>
-
-<script>
-  // Handle form submission
-  document.getElementById("uploadForm").addEventListener("submit", async function(event) {
-    event.preventDefault();  // Prevent form from submitting the traditional way
-
-    const formData = new FormData();
-    formData.append("name", document.getElementById("name").value);
-    formData.append("email", document.getElementById("email").value);
-    formData.append("pack", document.getElementById("pack").value);
-    formData.append("file", document.getElementById("file").files[0]);
-
-    // Use fetch API to send data
-    try {
-      const response = await fetch("/cart", {
-        method: "POST",
-        body: formData,  // Form data containing the file and other fields
-      });
-
-      // Check if response is successful
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Upload successful", data);
-        alert("File uploaded successfully!");
-      } else {
-        console.error("Error during upload", response.status);
-        alert("There was an error uploading the file.");
-      }
-    } catch (error) {
-      console.error("Network error", error);
-      alert("There was an error uploading the file.");
-    }
-  });
-</script>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="AccountInfo">
+    <p class="name">Name:</p>
+    <input type="text" id="name" formControlName="name" required>
+    <p class="email">Email:</p>
+    <input type="email" id="email" formControlName="email" required>
+  </div>
+  <div class="package">
+    <h1 class="head2">Select Your Package:</h1>
+    <select class="pack" id="pack" formControlName="topic" required>
+      <option value="Basic">Basic</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Pro">Pro</option>
+    </select>
+  </div>
+  <button type="submit" class="purchase">Purchase</button>
+</form>
