@@ -7,6 +7,7 @@
 }
 
 
+
 .mainhead{
   font-size: 3rem;
   font-family: Gelasio;
@@ -16,6 +17,7 @@
   width: 695px;
   height: 116px;
   border: none;
+
 }
 
 span{
@@ -54,11 +56,11 @@ span{
   background-color: #20A4F3;
   color: white;
   border-radius: 25px;
-  width: 1000px;
+  width: 900px;
   height: 116px;
   border: none;
   position: absolute;
-  right: -110%;
+  right: -100%;
 }
 
 .text1{
