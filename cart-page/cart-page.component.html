@@ -7,6 +7,8 @@
     <input type="text" id="name" formControlName="name" required>
     <p class="email">Email:</p>
     <input type="email" id="email" formControlName="email" required>
+    <p class="video">Video:</p>
+    <input type="file" id="file" (change)="onFileChange($event)">
   </div>
   <div class="package">
     <h1 class="head2">Select Your Package:</h1>

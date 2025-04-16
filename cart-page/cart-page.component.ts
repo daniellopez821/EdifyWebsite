@@ -16,6 +16,8 @@ import {catchError, of} from 'rxjs';
 })
 export class CartPageComponent {
   form: FormGroup;
+  selectedFile: File | null = null;
+
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.form = this.fb.group({
@@ -24,15 +26,30 @@ export class CartPageComponent {
       topic: ['', Validators.required],  // This field represents the selected option
     });
   }
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+    }
+  }
+
 
   onSubmit() {
     if (this.form.valid) {
-      // Sending form data to the backend
-      this.http.post('http://localhost:3000/cart', this.form.value)
+      const formData = new FormData();
+      formData.append('name', this.form.get('name')?.value);
+      formData.append('email', this.form.get('email')?.value);
+      formData.append('topic', this.form.get('topic')?.value);
+
+      if (this.selectedFile) {
+        formData.append('file', this.selectedFile);
+      }
+
+      this.http.post('http://localhost:3000/cart', formData)
         .pipe(
           catchError(err => {
             console.error('Error:', err);
-            return of(err); // Handle error appropriately
+            return of(err);
           })
         )
         .subscribe(response => {
@@ -40,4 +57,5 @@ export class CartPageComponent {
         });
     }
   }
+
 }
